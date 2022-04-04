@@ -4,9 +4,11 @@
 
 ## Getting started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+In cmd
+- Run `yarn start` in frontend folder
+- In another tab `yarn run android`
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+N.B. Do not run in VS Code Terminal
 
 ## Add your files
 
