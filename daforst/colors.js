@@ -7,4 +7,6 @@ export const COLORS = {
   bronze: '#CF7D34',
   lightBrown: '#9D5E18',
   darkBrown: '#733F20',
+  white: '#fff',
+  black: '#000',
 };

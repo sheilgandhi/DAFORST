@@ -1,52 +1,79 @@
-import React, {useEffect} from 'react';
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import React, {useEffect, useLayoutEffect} from 'react';
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Pressable,
+  useWindowDimensions,
+} from 'react-native';
 
 import {COLORS} from '../colors';
 
-const image = require('../assets/forestBackground.jpg');
+const image = require('../assets/background.png');
 
 const HomeScreen = ({navigation}) => {
+  const {height, width} = useWindowDimensions();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: 'DAFORST',
+    });
+  }, [navigation]);
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-        <Text style={styles.text}>DAFORST</Text>
         <View style={styles.buttons}>
-          <View style={styles.button}></View>
-          <View style={styles.button}></View>
+          <Pressable
+            onPress={() => navigation.navigate('Upload')}
+            style={[
+              styles.button,
+              {backgroundColor: COLORS.green, width: width - 16},
+            ]}>
+            <Text style={[styles.text, {color: COLORS.white}]}>Upload</Text>
+          </Pressable>
+          <Pressable
+            onPress={() => navigation.navigate('Assets')}
+            style={[
+              styles.button,
+              {backgroundColor: COLORS.cream, width: width - 16},
+            ]}>
+            <Text style={[styles.text, {color: COLORS.black}]}>Assets</Text>
+          </Pressable>
         </View>
       </ImageBackground>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
   },
   image: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
   },
-  button: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  buttons: {
+    justifyContent: 'space-evenly',
     alignItems: 'center',
   },
   button: {
-    width: 100,
-    height: 100,
-    backgroundColor: COLORS.cream,
-    boxShadow: '0px 4px 6px 4px rgba(0, 0, 0, 0.25)',
+    height: 50,
     borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 10,
+    shadowColor: '#171717',
+    shadowOffset: {width: 0, height: 3},
+    shadowOpacity: 0.4,
+    shadowRadius: 2,
   },
   text: {
-    color: 'white',
-    fontSize: 42,
-    lineHeight: 84,
-    fontWeight: 'bold',
+    fontSize: 24,
     textAlign: 'center',
-    backgroundColor: '#000000c0',
   },
 });
 
