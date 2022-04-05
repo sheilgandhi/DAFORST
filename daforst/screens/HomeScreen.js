@@ -3,9 +3,7 @@ import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 
 import {COLORS} from '../colors';
 
-const image = {
-  uri: 'https://static.vecteezy.com/system/resources/previews/002/099/768/large_2x/forest-landscape-background-design-illustration-free-vector.jpg',
-};
+const image = require('../assets/forestBackground.jpg');
 
 const HomeScreen = ({navigation}) => {
   return (
