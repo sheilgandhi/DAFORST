@@ -1,6 +1,6 @@
 import React, {useEffect, useLayoutEffect} from 'react';
 import {
-  ImageBackground,
+  Image,
   StyleSheet,
   Text,
   View,
@@ -11,7 +11,7 @@ import {
 
 import {COLORS} from '../colors';
 
-const image = require('../assets/background.png');
+const image = require('../assets/daforst_tree.png');
 
 const HomeScreen = ({navigation}) => {
   const {height, width} = useWindowDimensions();
@@ -19,31 +19,38 @@ const HomeScreen = ({navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       title: 'DAFORST',
+      headerShown: false,
     });
   }, [navigation]);
 
   return (
     <SafeAreaView style={styles.container}>
-      <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-        <View style={styles.buttons}>
-          <Pressable
-            onPress={() => navigation.navigate('Upload')}
-            style={[
-              styles.button,
-              {backgroundColor: COLORS.green, width: width - 16},
-            ]}>
-            <Text style={[styles.text, {color: COLORS.white}]}>Upload</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => navigation.navigate('Assets')}
-            style={[
-              styles.button,
-              {backgroundColor: COLORS.cream, width: width - 16},
-            ]}>
-            <Text style={[styles.text, {color: COLORS.black}]}>Assets</Text>
-          </Pressable>
-        </View>
-      </ImageBackground>
+      <View style={styles.cta}>
+        <Image style={styles.image(height)} source={image} />
+        <Text style={styles.lineOne}>Hey! Welcome</Text>
+        <Text style={styles.lineTwo}>
+          DAFORST is a decentralised platform which helps provide data
+          sovereignty to communities.
+        </Text>
+      </View>
+      <View style={styles.buttons}>
+        <Pressable
+          onPress={() => navigation.navigate('Upload')}
+          style={[
+            styles.button,
+            {backgroundColor: COLORS.green, width: width - 32},
+          ]}>
+          <Text style={[styles.buttonText, {color: COLORS.white}]}>Upload</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => navigation.navigate('Assets')}
+          style={[
+            styles.button,
+            {backgroundColor: COLORS.white, width: width - 32},
+          ]}>
+          <Text style={[styles.buttonText, {color: COLORS.black}]}>Assets</Text>
+        </Pressable>
+      </View>
     </SafeAreaView>
   );
 };
@@ -51,10 +58,25 @@ const HomeScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'space-between',
   },
-  image: {
+  cta: {
     flex: 1,
-    justifyContent: 'flex-end',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
+  image: height => ({
+    resizeMode: 'center',
+    height: height / 2,
+  }),
+  lineOne: {
+    fontWeight: 'bold',
+    color: COLORS.black,
+    fontSize: 28,
+  },
+  lineTwo: {
+    marginHorizontal: 32,
+    textAlign: 'center',
   },
   buttons: {
     justifyContent: 'space-evenly',
@@ -62,17 +84,15 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 50,
-    borderRadius: 10,
+    borderRadius: 96,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 10,
-    shadowColor: '#171717',
-    shadowOffset: {width: 0, height: 3},
-    shadowOpacity: 0.4,
-    shadowRadius: 2,
+    borderColor: COLORS.green,
+    borderWidth: 3,
   },
-  text: {
-    fontSize: 24,
+  buttonText: {
+    fontSize: 18,
     textAlign: 'center',
   },
 });
