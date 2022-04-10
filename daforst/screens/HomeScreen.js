@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
   buttons: {
     justifyContent: 'space-evenly',
     alignItems: 'center',
+    paddingBottom: 10,
   },
   button: {
     height: 50,

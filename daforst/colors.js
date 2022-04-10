@@ -9,4 +9,5 @@ export const COLORS = {
   darkBrown: '#733F20',
   white: '#fff',
   black: '#000',
+  grey: '#f9f9f9',
 };
