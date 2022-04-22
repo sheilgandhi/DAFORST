@@ -9,6 +9,7 @@ import {
   Pressable,
 } from 'react-native';
 import React, {useState} from 'react';
+import IPFS from 'ipfs-mini';
 
 import {COLORS} from '../colors';
 
@@ -23,6 +24,14 @@ const UploadScreen = () => {
   const [desc, setDesc] = useState('');
 
   const {height, width} = useWindowDimensions();
+
+  const ipfs = new IPFS({
+    host: 'ipfs.infura.io',
+    port: 5001,
+    protocol: 'https',
+  });
+
+  ipfs.add('engr489').then(console.log).catch(console.log);
 
   return (
     <SafeAreaView style={styles.container}>
