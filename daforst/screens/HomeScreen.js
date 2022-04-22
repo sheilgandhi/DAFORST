@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   },
   lineTwo: {
     marginHorizontal: 32,
+    color: COLORS.black,
     textAlign: 'center',
   },
   buttons: {

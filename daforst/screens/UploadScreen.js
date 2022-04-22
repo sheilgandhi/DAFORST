@@ -10,10 +10,11 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import IPFS from 'ipfs-mini';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 import {COLORS} from '../colors';
 
-const UploadScreen = () => {
+const UploadScreen = ({navigation}) => {
   const [image, setImage] = useState(null);
 
   const [id, setId] = useState('');
@@ -31,15 +32,43 @@ const UploadScreen = () => {
     protocol: 'https',
   });
 
-  ipfs.add('engr489').then(console.log).catch(console.log);
+  const handleAddAsset = async () => {
+    // select between camera and imagepicker needed
+    const result = await launchImageLibrary({
+      includeBase64: true,
+    });
+    // const result1 = await launchCamera({
+    //   includeBase64: true,
+    // });
+    console.log(result.assets[0].base64);
+
+    // ARCore here
+
+    // IPFS
+    ipfs
+      .add(result.assets[0].base64)
+      .then(hash => {
+        console.log(hash);
+        navigation.navigate('Assets', {
+          ipfs_uri: hash,
+        });
+      })
+      .catch(console.log);
+
+    // Db Persistence
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         {/* Upload */}
         <View style={styles.uploadGroup}>
-          <Pressable onPress={() => {}} style={styles.upload}>
-            {image ? <Image /> : <Text>Upload</Text>}
+          <Pressable onPress={handleAddAsset} style={styles.upload}>
+            {image ? (
+              <Image />
+            ) : (
+              <Text style={{color: COLORS.black}}>Upload 📄</Text>
+            )}
           </Pressable>
         </View>
         {/* ARCore */}
@@ -54,6 +83,8 @@ const UploadScreen = () => {
             <TextInput
               placeholder="Name"
               style={styles.input}
+              inputStyle={{color: COLORS.black}}
+              placeholderTextColor={COLORS.black}
               onChangeText={setName}
               value={name}
             />
@@ -63,6 +94,8 @@ const UploadScreen = () => {
             <TextInput
               placeholder="Owner"
               style={styles.input}
+              inputStyle={{color: COLORS.black}}
+              placeholderTextColor={COLORS.black}
               onChangeText={setOwner}
               value={owner}
             />
@@ -72,6 +105,8 @@ const UploadScreen = () => {
             <TextInput
               placeholder="Description of asset"
               style={[styles.input, {minHeight: 75, textAlignVertical: 'top'}]}
+              inputStyle={{color: COLORS.black}}
+              placeholderTextColor={COLORS.black}
               onChangeText={setDesc}
               value={desc}
               multiline
@@ -118,7 +153,7 @@ const styles = StyleSheet.create({
   },
   upload: {
     height: 200,
-    backgroundColor: COLORS.grey,
+    backgroundColor: COLORS.lightBrown,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -134,6 +169,7 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: COLORS.grey,
+    color: COLORS.black,
     borderRadius: 10,
     paddingLeft: 20,
   },
