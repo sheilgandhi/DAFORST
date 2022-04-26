@@ -16,6 +16,7 @@ import { COLORS } from '../colors';
 
 const UploadScreen = ({ navigation }) => {
   const [image, setImage] = useState(null);
+  const [option, setOption] = useState(0);
 
   const [id, setId] = useState('');
   const [location, setLocation] = useState('');
@@ -32,14 +33,23 @@ const UploadScreen = ({ navigation }) => {
     protocol: 'https',
   });
 
-  const handleAddAsset = async () => {
-    // select between camera and imagepicker needed
-    const result = await launchImageLibrary({
-      includeBase64: true,
-    });
-    // const result1 = await launchCamera({
-    //   includeBase64: true,
-    // });
+  // const onOptionSelect = opt => {
+  //   console.log(opt);
+  //   setOption(opt);
+  //   handleAddAsset();
+  // };
+
+  const handleAddAsset = async option => {
+    let result;
+    if (option === 1) {
+      result = await launchImageLibrary({
+        includeBase64: true,
+      });
+    } else if (option === 2) {
+      result = await launchCamera({
+        includeBase64: true,
+      });
+    }
     console.log(result.assets[0].base64);
 
     // ARCore here
@@ -63,12 +73,11 @@ const UploadScreen = ({ navigation }) => {
       <ScrollView>
         {/* Upload */}
         <View style={styles.uploadGroup}>
-          <Pressable onPress={handleAddAsset} style={styles.upload}>
-            {image ? (
-              <Image />
-            ) : (
-              <Text style={{ color: COLORS.black }}>Upload 📄</Text>
-            )}
+          <Pressable onPress={() => handleAddAsset(1)} style={styles.upload}>
+            <Text style={{ color: COLORS.black }}>🖼️ Photo Gallery</Text>
+          </Pressable>
+          <Pressable onPress={() => handleAddAsset(2)} style={styles.upload}>
+            <Text style={{ color: COLORS.black }}>📷 Camera</Text>
           </Pressable>
         </View>
         {/* ARCore */}
@@ -155,11 +164,12 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   upload: {
-    height: 200,
-    backgroundColor: COLORS.lightBrown,
+    padding: 10,
+    backgroundColor: COLORS.grey,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 10,
   },
   inputGroup: {
     marginTop: 15,
