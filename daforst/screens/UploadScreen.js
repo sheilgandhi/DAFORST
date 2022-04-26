@@ -8,13 +8,13 @@ import {
   useWindowDimensions,
   Pressable,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import IPFS from 'ipfs-mini';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
-import {COLORS} from '../colors';
+import { COLORS } from '../colors';
 
-const UploadScreen = ({navigation}) => {
+const UploadScreen = ({ navigation }) => {
   const [image, setImage] = useState(null);
 
   const [id, setId] = useState('');
@@ -24,7 +24,7 @@ const UploadScreen = ({navigation}) => {
   const [owner, setOwner] = useState('');
   const [desc, setDesc] = useState('');
 
-  const {height, width} = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
 
   const ipfs = new IPFS({
     host: 'ipfs.infura.io',
@@ -67,7 +67,7 @@ const UploadScreen = ({navigation}) => {
             {image ? (
               <Image />
             ) : (
-              <Text style={{color: COLORS.black}}>Upload 📄</Text>
+              <Text style={{ color: COLORS.black }}>Upload 📄</Text>
             )}
           </Pressable>
         </View>
@@ -83,7 +83,7 @@ const UploadScreen = ({navigation}) => {
             <TextInput
               placeholder="Name"
               style={styles.input}
-              inputStyle={{color: COLORS.black}}
+              inputStyle={{ color: COLORS.black }}
               placeholderTextColor={COLORS.black}
               onChangeText={setName}
               value={name}
@@ -94,7 +94,7 @@ const UploadScreen = ({navigation}) => {
             <TextInput
               placeholder="Owner"
               style={styles.input}
-              inputStyle={{color: COLORS.black}}
+              inputStyle={{ color: COLORS.black }}
               placeholderTextColor={COLORS.black}
               onChangeText={setOwner}
               value={owner}
@@ -104,8 +104,11 @@ const UploadScreen = ({navigation}) => {
             <Text style={styles.label}>Description</Text>
             <TextInput
               placeholder="Description of asset"
-              style={[styles.input, {minHeight: 75, textAlignVertical: 'top'}]}
-              inputStyle={{color: COLORS.black}}
+              style={[
+                styles.input,
+                { minHeight: 75, textAlignVertical: 'top' },
+              ]}
+              inputStyle={{ color: COLORS.black }}
               placeholderTextColor={COLORS.black}
               onChangeText={setDesc}
               value={desc}
@@ -121,9 +124,9 @@ const UploadScreen = ({navigation}) => {
             onPress={() => navigation.navigate('Upload')}
             style={[
               styles.button,
-              {backgroundColor: COLORS.green, width: width - 64},
+              { backgroundColor: COLORS.green, width: width - 64 },
             ]}>
-            <Text style={[styles.buttonText, {color: COLORS.white}]}>
+            <Text style={[styles.buttonText, { color: COLORS.white }]}>
               Upload
             </Text>
           </Pressable>
@@ -131,9 +134,9 @@ const UploadScreen = ({navigation}) => {
             onPress={() => navigation.navigate('Assets')}
             style={[
               styles.button,
-              {backgroundColor: COLORS.white, width: width - 64},
+              { backgroundColor: COLORS.white, width: width - 64 },
             ]}>
-            <Text style={[styles.buttonText, {color: COLORS.black}]}>
+            <Text style={[styles.buttonText, { color: COLORS.black }]}>
               Clear
             </Text>
           </Pressable>

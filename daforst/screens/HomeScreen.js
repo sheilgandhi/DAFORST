@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect} from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import {
   Image,
   StyleSheet,
@@ -9,12 +9,12 @@ import {
   useWindowDimensions,
 } from 'react-native';
 
-import {COLORS} from '../colors';
+import { COLORS } from '../colors';
 
 const image = require('../assets/daforst_tree.png');
 
-const HomeScreen = ({navigation}) => {
-  const {height, width} = useWindowDimensions();
+const HomeScreen = ({ navigation }) => {
+  const { height, width } = useWindowDimensions();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -38,17 +38,21 @@ const HomeScreen = ({navigation}) => {
           onPress={() => navigation.navigate('Upload')}
           style={[
             styles.button,
-            {backgroundColor: COLORS.green, width: width - 32},
+            { backgroundColor: COLORS.green, width: width - 32 },
           ]}>
-          <Text style={[styles.buttonText, {color: COLORS.white}]}>Upload</Text>
+          <Text style={[styles.buttonText, { color: COLORS.white }]}>
+            Upload
+          </Text>
         </Pressable>
         <Pressable
           onPress={() => navigation.navigate('Assets')}
           style={[
             styles.button,
-            {backgroundColor: COLORS.white, width: width - 32},
+            { backgroundColor: COLORS.white, width: width - 32 },
           ]}>
-          <Text style={[styles.buttonText, {color: COLORS.black}]}>Assets</Text>
+          <Text style={[styles.buttonText, { color: COLORS.black }]}>
+            Assets
+          </Text>
         </Pressable>
       </View>
     </SafeAreaView>
