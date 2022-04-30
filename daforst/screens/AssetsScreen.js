@@ -3,13 +3,24 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const AssetsScreen = ({ route, navigation }) => {
-  const { ipfs_uri } = route.params; // QmTjoh8RFwQ7AZb9ohdwm5HEfcL8iP3XaG5sHiR43n7udc
+  // const { ipfs_uri } = route.params; // QmTjoh8RFwQ7AZb9ohdwm5HEfcL8iP3XaG5sHiR43n7udc
 
   const [image, setImage] = useState('');
+  const [assets, setAssets] = useState([]);
 
   useEffect(() => {
-    base64ToImage();
+    // base64ToImage();
+    getAssets();
   }, []);
+
+  const getAssets = async () => {
+    try {
+      const response = await axios.get('http://10.0.2.2:3000/api/assets');
+      setAssets(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const base64ToImage = async () => {
     try {
@@ -21,6 +32,8 @@ const AssetsScreen = ({ route, navigation }) => {
       console.error(error);
     }
   };
+
+  console.log(assets);
 
   return (
     <View>

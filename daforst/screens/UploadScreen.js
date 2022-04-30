@@ -13,6 +13,7 @@ import IPFS from 'ipfs-mini';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 import { COLORS } from '../colors';
+import axios from 'axios';
 
 const UploadScreen = ({ navigation }) => {
   const [image, setImage] = useState(null);
@@ -20,6 +21,7 @@ const UploadScreen = ({ navigation }) => {
 
   const [id, setId] = useState('');
   const [location, setLocation] = useState('');
+  const [ipfsCid, setIpfsCid] = useState('');
 
   const [name, setName] = useState('');
   const [owner, setOwner] = useState('');
@@ -39,33 +41,58 @@ const UploadScreen = ({ navigation }) => {
   //   handleAddAsset();
   // };
 
-  const handleAddAsset = async option => {
-    let result;
-    if (option === 1) {
-      result = await launchImageLibrary({
-        includeBase64: true,
+  const handleImagePicker = async () => {
+    const result = await launchImageLibrary({
+      includeBase64: true,
+    });
+    setImage(result);
+  };
+  const handleCamera = async () => {
+    const result = await launchCamera({
+      includeBase64: true,
+    });
+    setImage(result);
+  };
+
+  const uploadToIpfs = () => {
+    ipfs
+      .add(image.assets[0].base64)
+      .then(hash => {
+        console.log(hash);
+        setIpfsCid(hash);
+      })
+      .catch(console.log);
+  };
+
+  const postToDb = async () => {
+    await axios
+      .post('http://10.0.2.2:3000/api/assets/', {
+        arcore_id: id,
+        arcore_location: location,
+        ipfs_cid: ipfsCid,
+        name: name,
+        owner: owner,
+        description: desc,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
       });
-    } else if (option === 2) {
-      result = await launchCamera({
-        includeBase64: true,
-      });
-    }
-    console.log(result.assets[0].base64);
+  };
+
+  const handleAddAsset = () => {
+    console.log(image.assets[0].base64);
 
     // ARCore here
 
     // IPFS
-    ipfs
-      .add(result.assets[0].base64)
-      .then(hash => {
-        console.log(hash);
-        navigation.navigate('Assets', {
-          ipfs_uri: hash,
-        });
-      })
-      .catch(console.log);
-
+    uploadToIpfs();
     // Db Persistence
+    postToDb();
+    // navigate user to assets
+    navigation.navigate('Assets');
   };
 
   return (
@@ -73,10 +100,10 @@ const UploadScreen = ({ navigation }) => {
       <ScrollView>
         {/* Upload */}
         <View style={styles.uploadGroup}>
-          <Pressable onPress={() => handleAddAsset(1)} style={styles.upload}>
+          <Pressable onPress={handleImagePicker} style={styles.upload}>
             <Text style={{ color: COLORS.black }}>🖼️ Photo Gallery</Text>
           </Pressable>
-          <Pressable onPress={() => handleAddAsset(2)} style={styles.upload}>
+          <Pressable onPress={handleCamera} style={styles.upload}>
             <Text style={{ color: COLORS.black }}>📷 Camera</Text>
           </Pressable>
         </View>
@@ -130,7 +157,7 @@ const UploadScreen = ({ navigation }) => {
         {/* Buttons */}
         <View style={styles.buttons}>
           <Pressable
-            onPress={() => navigation.navigate('Upload')}
+            onPress={handleAddAsset}
             style={[
               styles.button,
               { backgroundColor: COLORS.green, width: width - 64 },

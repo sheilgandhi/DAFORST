@@ -11,3 +11,4 @@ CREATE TABLE ASSETS(
 CREATE SEQUENCE sequence_assets_id;
 ALTER SEQUENCE sequence_assets_id restart with 1;
 -- To make arcore information not null after its development
+ALTER TABLE ASSETS DROP CONSTRAINT assets_arcore_id_key;
