@@ -13,6 +13,10 @@ const AssetsScreen = ({ route, navigation }) => {
     getAssets();
   }, []);
 
+  useEffect(() => {
+    // remap array to use ipfs_uri
+  }, [assets]);
+
   const getAssets = async () => {
     try {
       const response = await axios.get('http://10.0.2.2:3000/api/assets');
@@ -22,26 +26,29 @@ const AssetsScreen = ({ route, navigation }) => {
     }
   };
 
-  const base64ToImage = async () => {
+  const base64ToImage = async asset => {
     try {
       const response = await axios.get(
-        `https://ipfs.infura.io/ipfs/${ipfs_uri}`,
+        `https://ipfs.infura.io/ipfs/${asset.ipfs_cid}`,
       );
-      setImage(response.data);
+      return response.data;
     } catch (error) {
       console.error(error);
     }
   };
 
-  console.log(assets);
-
   return (
     <View>
       <Text>AssetsScreen</Text>
-      <Image
-        source={{ uri: `data:image/png;base64,${image}` }}
-        style={styles.image}
-      />
+      {assets.map((asset, i) => (
+        <View key={i}>
+          <Text>{asset.ipfs_cid}</Text>
+          <Image
+            source={{ uri: `data:image/png;base64,${base64ToImage(asset)}` }}
+            style={styles.image}
+          />
+        </View>
+      ))}
     </View>
   );
 };
