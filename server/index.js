@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const db = require("./Assets");
+const db = require("./Assets/Assets");
 const app = express();
 const port = 3000;
 
@@ -15,12 +15,10 @@ app.get("/", (request, response) => {
   response.json({ info: "Welcome to DAFORST" });
 });
 
-// app.get("/api/assets", db.getAssets);
-// app.get("/api/coach/:coach_id", db.getCoachById);
-// app.post("/api/coach", db.createCoach);
-// app.put("/api/coach/update_description/:coach_id", db.updateCoachDescription);
-// app.put("/api/coach/update_email/:coach_id", db.updateCoachEmail);
-// app.delete("/api/coach/:coach_id", db.deleteCoach);
+app.get("/api/assets", db.getAssets);
+app.get("/api/assets/:asset_id", db.getAssetById);
+app.post("/api/assets", db.createAsset);
+app.delete("/api/assets/deleteAsset/:asset_id", db.deleteAsset);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
