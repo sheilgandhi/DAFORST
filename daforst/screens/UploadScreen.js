@@ -17,7 +17,6 @@ import axios from 'axios';
 
 const UploadScreen = ({ navigation }) => {
   const [image, setImage] = useState(null);
-  const [option, setOption] = useState(0);
 
   const [id, setId] = useState('');
   const [location, setLocation] = useState('');
@@ -27,19 +26,13 @@ const UploadScreen = ({ navigation }) => {
   const [owner, setOwner] = useState('');
   const [desc, setDesc] = useState('');
 
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const ipfs = new IPFS({
     host: 'ipfs.infura.io',
     port: 5001,
     protocol: 'https',
   });
-
-  // const onOptionSelect = opt => {
-  //   console.log(opt);
-  //   setOption(opt);
-  //   handleAddAsset();
-  // };
 
   const handleImagePicker = async () => {
     const result = await launchImageLibrary({

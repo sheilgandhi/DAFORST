@@ -1,22 +1,16 @@
-import { View, Text, Image, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { COLORS } from '../colors';
+import Loading from '../components/Loading';
+import AssetPreview from '../components/AssetPreview';
 
-const AssetsScreen = ({ route, navigation }) => {
-  // const { ipfs_uri } = route.params; // QmTjoh8RFwQ7AZb9ohdwm5HEfcL8iP3XaG5sHiR43n7udc
-
-  const [image, setImage] = useState('');
+const AssetsScreen = ({ navigation }) => {
   const [assets, setAssets] = useState([]);
 
   useEffect(() => {
     // base64ToImage();
     getAssets();
   }, []);
-
-  useEffect(() => {
-    // remap array to use ipfs_uri
-  }, [assets]);
 
   const getAssets = async () => {
     try {
@@ -45,16 +39,14 @@ const AssetsScreen = ({ route, navigation }) => {
   return (
     <View>
       {assets.length > 0 ? (
-        assets.map((asset, i) => (
-          <View key={i}>
-            <Image
-              source={{ uri: `data:image/png;base64,${asset.imgUrl}` }}
-              style={styles.image}
-            />
-          </View>
-        ))
+        <FlatList
+          data={assets}
+          renderItem={({ item }) => (
+            <AssetPreview asset={item} navigation={navigation} key={item.key} />
+          )}
+        />
       ) : (
-        <ActivityIndicator size="large" color={COLORS.green} />
+        <Loading />
       )}
     </View>
   );
