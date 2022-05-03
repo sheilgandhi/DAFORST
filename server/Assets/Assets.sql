@@ -12,3 +12,4 @@ CREATE SEQUENCE sequence_assets_id;
 ALTER SEQUENCE sequence_assets_id restart with 1;
 -- To make arcore information not null after its development
 ALTER TABLE ASSETS DROP CONSTRAINT assets_arcore_id_key;
+ALTER TABLE ASSETS ADD CONSTRAINT no_empty_ipfs_cid_strings CHECK (length(ipfs_cid)>0);
