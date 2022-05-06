@@ -38,3 +38,19 @@ Karen is a 55-year-old Research Librarian, living in Christchurch. She currently
 **Information Processing:** Karen finds literature easier to digest and she loses interest very quickly if something does not appeal to her.<br/>
 **Tinkering:** Karen has not got time to be messing around and is a creature of habit.<br/>
 
+### Amiri Ioane
+<img src="https://ngaitahu.iwi.nz/wp-content/uploads/2012/12/Hana-Morgan-1.jpg" alt="Amiri Ioane" width=250 height=250 /><br/>
+Amiri is a 68 year old Maori lady, living in Levin. She is currently retired with her 73 year old husband. Growing up Amiri's first language was Te Reo Maori. Before retirement Amiri was a daycare supervisor and often taught Te Reo to the ones she looked after. Now retired, Amiri enjoys gardening and has a love for flowers. She is not the least bit interested in technology<br/>
+**Activities:** Amiri enjoys visiting the gardens of towns she travels to and enjoys the occassional visit to Te Papa in Wellington. She is also involved in a gardening club with her friends.<br/>
+**Attitudes:** Amiri is very relaxed. However, she is very stuck in her ways and is often found complaining about small things.<br/>
+**Aptitudes:** Amiri did not attend university and left school at 16. Her knowledge with technology is very limited. She needs very clear instruction with what to do and has a small attention span. <br/>
+**Weaknesses:** Amiri is not academically strong and finds complex topic very stressful.<br/>
+**Domain Knowledge:** Amiri has never heard of a decentralised app.<br/>
+**System Knowledge:** She struggles with centralised apps and often needs help from her husband.<br/>
+**Interaction:** Amiri is very strong willed and do her best to remember things. She will use apps when it is convenient.<br/>
+**Priorities:** Amiri's priorities are her husband and her gardening club, which often consumes her thoughts.<br/>
+**Motivations:** Amiri wants to use DAFORST for her gardening club and wants to share passion of flowers, but fears the internet and everything that it brings with it.<br/>
+**Computer self-efficacy:** Amiri uses her phone very seldomly but knows how to use basic social media platforms to communicate with her friends and family.<br/>
+**Risk tolerance:** Amiri used to be a fan of risks, in her heyday, but due to her old age she is more reserved now, when it comes to most things.<br/>
+**Information Processing:** Amiri does not take in information very quickly and oftens needs someones help to go over things until she is confident.<br/>
+**Tinkering:** Amiri is not a big tinkerer. She will often do something or leave it in its entirity.<br/>
