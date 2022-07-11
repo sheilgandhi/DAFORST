@@ -7,11 +7,10 @@ import {
   ScrollView,
   useWindowDimensions,
   Pressable,
+  NativeModules,
 } from 'react-native';
 import React, { useState } from 'react';
 import IPFS from 'ipfs-mini';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-
 import { COLORS } from '../colors';
 import axios from 'axios';
 
@@ -34,17 +33,14 @@ const UploadScreen = ({ navigation }) => {
     protocol: 'https',
   });
 
-  const handleImagePicker = async () => {
-    const result = await launchImageLibrary({
-      includeBase64: true,
-    });
-    setImage(result);
-  };
-  const handleCamera = async () => {
-    const result = await launchCamera({
-      includeBase64: true,
-    });
-    setImage(result);
+  /**
+   * To open ARCore Cloud Anchors app using Android Intents
+   * https://www.npmjs.com/package/react-native-intent-launcher
+   */
+  const handleArCore = () => {
+    const packageName =
+      'com.google.ar.core.examples.java.persistentcloudanchor';
+    NativeModules.ARCore.startARCore();
   };
 
   const uploadToIpfs = () => {
@@ -103,11 +99,8 @@ const UploadScreen = ({ navigation }) => {
       <ScrollView>
         {/* Upload */}
         <View style={styles.uploadGroup}>
-          <Pressable onPress={handleImagePicker} style={styles.upload}>
-            <Text style={{ color: COLORS.black }}>🖼️ Photo Gallery</Text>
-          </Pressable>
-          <Pressable onPress={handleCamera} style={styles.upload}>
-            <Text style={{ color: COLORS.black }}>📷 Camera</Text>
+          <Pressable onPress={handleArCore} style={styles.upload}>
+            <Text style={{ color: COLORS.black }}>📷 Capture</Text>
           </Pressable>
         </View>
         {/* ARCore */}
