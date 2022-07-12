@@ -34,12 +34,9 @@ const UploadScreen = ({ navigation }) => {
   });
 
   /**
-   * To open ARCore Cloud Anchors app using Android Intents
-   * https://www.npmjs.com/package/react-native-intent-launcher
+   * Uses React Native Bridge
    */
   const handleArCore = () => {
-    const packageName =
-      'com.google.ar.core.examples.java.persistentcloudanchor';
     NativeModules.ARCore.startARCore();
   };
 
