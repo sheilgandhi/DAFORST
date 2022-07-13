@@ -33,7 +33,7 @@
   "jest": {
     "preset": "react-native",
     "transformIgnorePatterns": [
-      "node_modules/(?!(react-native|daforst|@react-navigation/native|@react-navigation/native-stack|@react-native|@react-navigation|react-native-image-picker)/)"
+      "node_modules/(?!(react-native|daforst|@react-navigation|@react-native|@react-navigation|react-native-image-picker)/)"
     ]
   }
 }
