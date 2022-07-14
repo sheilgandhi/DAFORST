@@ -1,0 +1,353 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UploadScreen renders correctly 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "flex": 1,
+      "marginHorizontal": 24,
+    }
+  }
+>
+  <RCTScrollView>
+    <View>
+      <View
+        style={
+          Object {
+            "marginVertical": 20,
+          }
+        }
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#f9f9f9",
+              "borderRadius": 10,
+              "justifyContent": "center",
+              "marginBottom": 10,
+              "padding": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#000",
+              }
+            }
+          >
+            🖼️ Photo Gallery
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#f9f9f9",
+              "borderRadius": 10,
+              "justifyContent": "center",
+              "marginBottom": 10,
+              "padding": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#000",
+              }
+            }
+          >
+            📷 Camera
+          </Text>
+        </View>
+      </View>
+      <View>
+        <Text
+          style={
+            Object {
+              "color": "#55897B",
+              "fontSize": 16,
+              "fontWeight": "bold",
+              "paddingBottom": 10,
+            }
+          }
+        >
+          ID: 
+          ...
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#55897B",
+              "fontSize": 16,
+              "fontWeight": "bold",
+              "paddingBottom": 10,
+            }
+          }
+        >
+          Location: 
+          ...
+        </Text>
+      </View>
+      <View>
+        <View
+          style={
+            Object {
+              "marginTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#55897B",
+                "fontSize": 16,
+                "fontWeight": "bold",
+                "paddingBottom": 10,
+              }
+            }
+          >
+            Name
+          </Text>
+          <TextInput
+            inputStyle={
+              Object {
+                "color": "#000",
+              }
+            }
+            onChangeText={[Function]}
+            placeholder="Name"
+            placeholderTextColor="#000"
+            style={
+              Object {
+                "backgroundColor": "#f9f9f9",
+                "borderRadius": 10,
+                "color": "#000",
+                "paddingLeft": 20,
+              }
+            }
+            value=""
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "marginTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#55897B",
+                "fontSize": 16,
+                "fontWeight": "bold",
+                "paddingBottom": 10,
+              }
+            }
+          >
+            Owner
+          </Text>
+          <TextInput
+            inputStyle={
+              Object {
+                "color": "#000",
+              }
+            }
+            onChangeText={[Function]}
+            placeholder="Owner"
+            placeholderTextColor="#000"
+            style={
+              Object {
+                "backgroundColor": "#f9f9f9",
+                "borderRadius": 10,
+                "color": "#000",
+                "paddingLeft": 20,
+              }
+            }
+            value=""
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "marginTop": 15,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#55897B",
+                "fontSize": 16,
+                "fontWeight": "bold",
+                "paddingBottom": 10,
+              }
+            }
+          >
+            Description
+          </Text>
+          <TextInput
+            inputStyle={
+              Object {
+                "color": "#000",
+              }
+            }
+            multiline={true}
+            onChangeText={[Function]}
+            placeholder="Description of asset"
+            placeholderTextColor="#000"
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#f9f9f9",
+                  "borderRadius": 10,
+                  "color": "#000",
+                  "paddingLeft": 20,
+                },
+                Object {
+                  "minHeight": 75,
+                  "textAlignVertical": "top",
+                },
+              ]
+            }
+            value=""
+          />
+        </View>
+      </View>
+      <View />
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "justifyContent": "space-evenly",
+            "paddingBottom": 10,
+          }
+        }
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "borderColor": "#55897B",
+                "borderRadius": 96,
+                "borderWidth": 3,
+                "height": 50,
+                "justifyContent": "center",
+                "margin": 10,
+              },
+              Object {
+                "backgroundColor": "#55897B",
+                "width": 686,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "fontSize": 18,
+                  "textAlign": "center",
+                },
+                Object {
+                  "color": "#fff",
+                },
+              ]
+            }
+          >
+            Upload
+          </Text>
+        </View>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "borderColor": "#55897B",
+                "borderRadius": 96,
+                "borderWidth": 3,
+                "height": 50,
+                "justifyContent": "center",
+                "margin": 10,
+              },
+              Object {
+                "backgroundColor": "#fff",
+                "width": 686,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "fontSize": 18,
+                  "textAlign": "center",
+                },
+                Object {
+                  "color": "#000",
+                },
+              ]
+            }
+          >
+            Clear
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</RCTSafeAreaView>
+`;

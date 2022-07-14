@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetsScreen renders correctly 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "center",
+        "marginTop": 30,
+      }
+    }
+  >
+    <ActivityIndicator
+      color="#55897B"
+      size="large"
+    />
+  </View>
+</View>
+`;

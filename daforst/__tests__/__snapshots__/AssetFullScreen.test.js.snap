@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AssetFullScreen renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "data:image/png;base64,function () {
+        return fn.apply(this, arguments);
+      }",
+      }
+    }
+    style={
+      Object {
+        "height": 300,
+        "width": "100%",
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "color": "#000",
+        "flex": 1,
+        "justifyContent": "center",
+        "paddingLeft": 20,
+      }
+    }
+  >
+    <Text>
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        ARCore ID: 
+      </Text>
+    </Text>
+    <Text>
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        ARCore Location: 
+      </Text>
+    </Text>
+    <Text>
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        IPFS ID: 
+      </Text>
+    </Text>
+    <Text>
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Name: 
+      </Text>
+    </Text>
+    <Text>
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Owner: 
+      </Text>
+    </Text>
+    <Text>
+      <Text
+        style={
+          Object {
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Description: 
+      </Text>
+    </Text>
+  </View>
+</View>
+`;

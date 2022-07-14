@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders correctly 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "flex": 1,
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "justifyContent": "space-evenly",
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../assets/daforst_tree.png",
+        }
+      }
+      style={
+        Object {
+          "height": 667,
+          "resizeMode": "center",
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "#000",
+          "fontSize": 28,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Hey! Welcome
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#000",
+          "marginHorizontal": 32,
+          "textAlign": "center",
+        }
+      }
+    >
+      DAFORST is a decentralised platform which helps provide data sovereignty to communities.
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "justifyContent": "space-evenly",
+        "paddingBottom": 10,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderColor": "#55897B",
+            "borderRadius": 96,
+            "borderWidth": 3,
+            "height": 50,
+            "justifyContent": "center",
+            "margin": 10,
+          },
+          Object {
+            "backgroundColor": "#55897B",
+            "width": 718,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "fontSize": 18,
+              "textAlign": "center",
+            },
+            Object {
+              "color": "#fff",
+            },
+          ]
+        }
+      >
+        Upload
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderColor": "#55897B",
+            "borderRadius": 96,
+            "borderWidth": 3,
+            "height": 50,
+            "justifyContent": "center",
+            "margin": 10,
+          },
+          Object {
+            "backgroundColor": "#fff",
+            "width": 718,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "fontSize": 18,
+              "textAlign": "center",
+            },
+            Object {
+              "color": "#000",
+            },
+          ]
+        }
+      >
+        Assets
+      </Text>
+    </View>
+  </View>
+</RCTSafeAreaView>
+`;
