@@ -46,6 +46,7 @@ const HomeScreen = ({ navigation }) => {
           </Text>
         </Pressable>
         <Pressable
+          testID="assetsButton"
           onPress={() => navigation.navigate('Assets')}
           style={[
             styles.button,

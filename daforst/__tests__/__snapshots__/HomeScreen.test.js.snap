@@ -143,6 +143,7 @@ exports[`Home renders correctly 1`] = `
           },
         ]
       }
+      testID="assetsButton"
     >
       <Text
         style={

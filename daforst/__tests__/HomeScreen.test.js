@@ -38,10 +38,20 @@ describe('Home', () => {
   test('validate upload button fires', async () => {
     const { getByTestId } = render(<HomeScreen navigation={navigation} />);
     const pressable = getByTestId('uploadButton');
-    expect(getByTestId('uploadButton')).toBeTruthy(); // exists?
-    fireEvent(pressable, 'press');
+    expect(pressable).toBeTruthy(); // exists?
+    fireEvent.press(pressable);
     await waitFor(() => {
-      expect(navigation.navigate).toHaveBeenCalledTimes(1);
+      expect(navigation.navigate).toHaveBeenCalled();
+    });
+  });
+
+  test('validate assets button fires', async () => {
+    const { getByTestId } = render(<HomeScreen navigation={navigation} />);
+    const pressable = getByTestId('assetsButton');
+    expect(pressable).toBeTruthy(); // exists?
+    fireEvent.press(pressable);
+    await waitFor(() => {
+      expect(navigation.navigate).toHaveBeenCalled();
     });
   });
 });
