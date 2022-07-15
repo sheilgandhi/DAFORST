@@ -88,6 +88,16 @@ const UploadScreen = ({ navigation }) => {
     navigation.navigate('Assets');
   };
 
+  const handleClear = () => {
+    setImage(null);
+    setId('');
+    setLocation('');
+    setIpfsCid('');
+    setName('');
+    setOwner('');
+    setDesc('');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -157,6 +167,7 @@ const UploadScreen = ({ navigation }) => {
         {/* Buttons */}
         <View style={styles.buttons}>
           <Pressable
+            testID="uploadButton"
             onPress={handleAddAsset}
             style={[
               styles.button,
@@ -167,7 +178,8 @@ const UploadScreen = ({ navigation }) => {
             </Text>
           </Pressable>
           <Pressable
-            onPress={() => navigation.navigate('Assets')}
+            testID="clearButton"
+            onPress={handleClear}
             style={[
               styles.button,
               { backgroundColor: COLORS.white, width: width - 64 },
