@@ -28,13 +28,14 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.cta}>
         <Image style={styles.image(height)} source={image} />
         <Text style={styles.lineOne}>Hey! Welcome</Text>
-        <Text style={styles.lineTwo}>
+        <Text testID="cta" style={styles.lineTwo}>
           DAFORST is a decentralised platform which helps provide data
           sovereignty to communities.
         </Text>
       </View>
       <View style={styles.buttons}>
         <Pressable
+          testID="uploadButton"
           onPress={() => navigation.navigate('Upload')}
           style={[
             styles.button,
