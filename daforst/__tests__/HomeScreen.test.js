@@ -35,11 +35,13 @@ describe('Home', () => {
     );
   });
 
-  test('validate upload button fires', () => {
-    const mockNavigation = jest.fn();
+  test('validate upload button fires', async () => {
     const { getByTestId } = render(<HomeScreen navigation={navigation} />);
     const pressable = getByTestId('uploadButton');
-    fireEvent.press(pressable);
-    // expect(mockNavigation).toHaveBeenCalledTimes(1);
+    expect(getByTestId('uploadButton')).toBeTruthy(); // exists?
+    fireEvent(pressable, 'press');
+    await waitFor(() => {
+      expect(navigation.navigate).toHaveBeenCalledTimes(1);
+    });
   });
 });
