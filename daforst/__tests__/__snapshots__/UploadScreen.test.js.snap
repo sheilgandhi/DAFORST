@@ -98,6 +98,7 @@ exports[`UploadScreen renders correctly 1`] = `
               "paddingBottom": 10,
             }
           }
+          testID="id"
         >
           ID: 
           ...
@@ -111,6 +112,7 @@ exports[`UploadScreen renders correctly 1`] = `
               "paddingBottom": 10,
             }
           }
+          testID="location"
         >
           Location: 
           ...
@@ -153,6 +155,7 @@ exports[`UploadScreen renders correctly 1`] = `
                 "paddingLeft": 20,
               }
             }
+            testID="name"
             value=""
           />
         </View>
@@ -192,6 +195,7 @@ exports[`UploadScreen renders correctly 1`] = `
                 "paddingLeft": 20,
               }
             }
+            testID="owner"
             value=""
           />
         </View>
@@ -238,6 +242,7 @@ exports[`UploadScreen renders correctly 1`] = `
                 },
               ]
             }
+            testID="description"
             value=""
           />
         </View>

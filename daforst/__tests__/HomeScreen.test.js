@@ -3,7 +3,6 @@ import renderer from 'react-test-renderer';
 import HomeScreen from '../screens/HomeScreen';
 import {
   fireEvent,
-  screen,
   render,
   waitFor,
   cleanup,
@@ -15,7 +14,7 @@ const navigation = {
   setOptions: jest.fn(),
 };
 
-describe('Home', () => {
+describe('HomeScreen', () => {
   afterEach(() => {
     cleanup();
   });

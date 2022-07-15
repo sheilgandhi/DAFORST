@@ -102,14 +102,19 @@ const UploadScreen = ({ navigation }) => {
         </View>
         {/* ARCore */}
         <View>
-          <Text style={styles.label}>ID: {id || '...'}</Text>
-          <Text style={styles.label}>Location: {location || '...'}</Text>
+          <Text testID="id" style={styles.label}>
+            ID: {id || '...'}
+          </Text>
+          <Text testID="location" style={styles.label}>
+            Location: {location || '...'}
+          </Text>
         </View>
         {/* Form Basic */}
         <View>
           <View style={styles.inputGroup}>
             <Text style={styles.label}>Name</Text>
             <TextInput
+              testID="name"
               placeholder="Name"
               style={styles.input}
               inputStyle={{ color: COLORS.black }}
@@ -121,6 +126,7 @@ const UploadScreen = ({ navigation }) => {
           <View style={styles.inputGroup}>
             <Text style={styles.label}>Owner</Text>
             <TextInput
+              testID="owner"
               placeholder="Owner"
               style={styles.input}
               inputStyle={{ color: COLORS.black }}
@@ -132,6 +138,7 @@ const UploadScreen = ({ navigation }) => {
           <View style={styles.inputGroup}>
             <Text style={styles.label}>Description</Text>
             <TextInput
+              testID="description"
               placeholder="Description of asset"
               style={[
                 styles.input,
