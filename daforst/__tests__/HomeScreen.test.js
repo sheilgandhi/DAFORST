@@ -6,6 +6,7 @@ import {
   render,
   waitFor,
   cleanup,
+  screen,
 } from '@testing-library/react-native';
 
 const navigation = {
@@ -15,28 +16,27 @@ const navigation = {
 };
 
 describe('HomeScreen', () => {
+  beforeEach(() => {
+    render(<HomeScreen navigation={navigation} />);
+  });
+
   afterEach(() => {
     cleanup();
   });
 
   test('renders correctly', () => {
-    const tree = renderer
-      .create(<HomeScreen navigation={navigation} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(screen.toJSON()).toMatchSnapshot();
   });
 
   test('validate call to action text', () => {
-    const { getByTestId } = render(<HomeScreen navigation={navigation} />);
-    const cta = getByTestId('cta');
+    const cta = screen.getByTestId('cta');
     expect(cta.props.children).toEqual(
       'DAFORST is a decentralised platform which helps provide data sovereignty to communities.',
     );
   });
 
   test('validate upload button fires', async () => {
-    const { getByTestId } = render(<HomeScreen navigation={navigation} />);
-    const pressable = getByTestId('uploadButton');
+    const pressable = screen.getByTestId('uploadButton');
     expect(pressable).toBeTruthy(); // exists?
     fireEvent.press(pressable);
     await waitFor(() => {
@@ -45,8 +45,7 @@ describe('HomeScreen', () => {
   });
 
   test('validate assets button fires', async () => {
-    const { getByTestId } = render(<HomeScreen navigation={navigation} />);
-    const pressable = getByTestId('assetsButton');
+    const pressable = screen.getByTestId('assetsButton');
     expect(pressable).toBeTruthy(); // exists?
     fireEvent.press(pressable);
     await waitFor(() => {

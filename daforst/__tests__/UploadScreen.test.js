@@ -6,6 +6,7 @@ import {
   render,
   waitFor,
   cleanup,
+  screen,
 } from '@testing-library/react-native';
 import { faker } from '@faker-js/faker';
 
@@ -16,21 +17,21 @@ const navigation = {
 };
 
 describe('UploadScreen', () => {
+  beforeEach(() => {
+    render(<UploadScreen navigation={navigation} />);
+  });
+
   afterEach(() => {
     cleanup();
   });
 
   test('renders correctly', () => {
-    const tree = renderer
-      .create(<UploadScreen navigation={navigation} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(screen.toJSON()).toMatchSnapshot();
   });
 
   test('validate name input fills', async () => {
     const name = faker.name.findName();
-    const { getByTestId } = render(<UploadScreen navigation={navigation} />);
-    const input = getByTestId('name');
+    const input = screen.getByTestId('name');
     expect(input).toBeTruthy(); // exists?
     fireEvent.changeText(input, name);
     expect(input.props.value).toBe(name);
@@ -38,8 +39,7 @@ describe('UploadScreen', () => {
 
   test('validate owner input fills', async () => {
     const owner = faker.name.findName();
-    const { getByTestId } = render(<UploadScreen navigation={navigation} />);
-    const input = getByTestId('owner');
+    const input = screen.getByTestId('owner');
     expect(input).toBeTruthy(); // exists?
     fireEvent.changeText(input, owner);
     expect(input.props.value).toBe(owner);
@@ -47,46 +47,41 @@ describe('UploadScreen', () => {
 
   test('validate description multiline input fills', async () => {
     const description = faker.lorem.lines();
-    const { getByTestId } = render(<UploadScreen navigation={navigation} />);
-    const input = getByTestId('description');
+    const input = screen.getByTestId('description');
     expect(input).toBeTruthy(); // exists?
     fireEvent.changeText(input, description);
     expect(input.props.value).toBe(description);
   });
 
   test('validate id gets returned from arcore', async () => {
-    const { getByTestId } = render(<UploadScreen navigation={navigation} />);
-    const id = getByTestId('id');
+    const id = screen.getByTestId('id');
     expect(id).toBeTruthy(); // exists?
     expect(id.props.children.toString()).toBe('ID: ,...'); // change ... to expected id variable
   });
 
   test('validate location gets returned from arcore', async () => {
-    const { getByTestId } = render(<UploadScreen navigation={navigation} />);
-    const id = getByTestId('location');
+    const id = screen.getByTestId('location');
     expect(id).toBeTruthy(); // exists?
     expect(id.props.children.toString()).toBe('Location: ,...'); // change ... to expected location variable
   });
 
   test('validate upload', () => {
-    const { getByTestId } = render(<UploadScreen navigation={navigation} />);
-    fireEvent.changeText(getByTestId('name'), faker.name.findName());
-    fireEvent.changeText(getByTestId('owner'), faker.name.findName());
-    fireEvent.changeText(getByTestId('description'), faker.lorem.lines());
+    fireEvent.changeText(screen.getByTestId('name'), faker.name.findName());
+    fireEvent.changeText(screen.getByTestId('owner'), faker.name.findName());
+    fireEvent.changeText(screen.getByTestId('description'), faker.lorem.lines());
   });
 
   test('validate text gets cleared', () => {
-    const { getByTestId } = render(<UploadScreen navigation={navigation} />);
-    const name = getByTestId('name');
-    const owner = getByTestId('owner');
-    const description = getByTestId('description');
+    const name = screen.getByTestId('name');
+    const owner = screen.getByTestId('owner');
+    const description = screen.getByTestId('description');
     fireEvent.changeText(name, faker.name.findName());
     fireEvent.changeText(owner, faker.name.findName());
     fireEvent.changeText(description, faker.lorem.lines());
     expect(name).toBeTruthy();
     expect(owner).toBeTruthy();
     expect(description).toBeTruthy();
-    fireEvent.press(getByTestId('clearButton'));
+    fireEvent.press(screen.getByTestId('clearButton'));
     expect(name.props.value).toBe('');
     expect(owner.props.value).toBe('');
     expect(description.props.value).toBe('');
