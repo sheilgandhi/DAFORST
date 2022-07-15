@@ -15,11 +15,13 @@ const AssetsScreen = ({ navigation }) => {
   const getAssets = async () => {
     try {
       const response = await axios.get('http://10.0.2.2:3000/api/assets');
-      const array = response.data;
-      for (let i = 0; i < array.length; i++) {
-        array[i]['imgUrl'] = await base64ToImage(array[i].ipfs_cid);
+      if (response) {
+        const array = response.data;
+        for (let i = 0; i < array.length; i++) {
+          array[i]['imgUrl'] = await base64ToImage(array[i].ipfs_cid);
+        }
+        setAssets(array);
       }
-      setAssets(array);
     } catch (error) {
       console.error(error);
     }
