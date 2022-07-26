@@ -648,6 +648,7 @@ public class CloudAnchorActivity extends AppCompatActivity implements GLSurfaceV
     ResolveListener resolveListener = new ResolveListener();
     synchronized (anchorLock) {
       unresolvedAnchorIds = getIntent().getStringArrayListExtra(EXTRA_ANCHORS_TO_RESOLVE);
+      if (unresolvedAnchorIds == null) unresolvedAnchorIds = new ArrayList<>();
       debugText.setText(getString(R.string.debug_resolving_processing, unresolvedAnchorIds.size()));
       // Encourage the user to look at a previously mapped area.
       userMessageText.setText(R.string.resolving_processing);
