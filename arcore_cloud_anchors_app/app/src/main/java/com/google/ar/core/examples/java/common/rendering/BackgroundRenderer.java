@@ -16,9 +16,12 @@
 package com.google.ar.core.examples.java.common.rendering;
 
 import android.content.Context;
+import android.media.Image;
 import android.opengl.GLES11Ext;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import com.google.ar.core.Coordinates2d;
 import com.google.ar.core.Frame;
@@ -64,6 +67,9 @@ public class BackgroundRenderer {
   private int depthTexCoordAttrib;
   private int depthTextureUniform;
   private int depthTextureId = -1;
+
+  // DAFORST
+  public ByteBuffer image;
 
   public int getTextureId() {
     return cameraTextureId;
@@ -179,10 +185,23 @@ public class BackgroundRenderer {
           quadTexCoords);
     }
 
+
+
     if (frame.getTimestamp() == 0 && suppressTimestampZeroRendering) {
       // Suppress rendering if the camera did not produce the first frame yet. This is to avoid
       // drawing possible leftover data from previous sessions if the texture is reused.
       return;
+    }
+
+    try {
+      Image im = frame.acquireCameraImage();
+      ByteBuffer buf = im.getPlanes()[0].getBuffer();
+      image = buf;
+      Log.d(TAG, "Format = " + im.getFormat());
+      im.close();
+
+    } catch (Exception e) {
+      e.printStackTrace();
     }
 
     draw(debugShowDepthMap);

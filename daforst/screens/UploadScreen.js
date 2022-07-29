@@ -9,7 +9,7 @@ import {
   Pressable,
   NativeModules,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import IPFS from 'ipfs-mini';
 import { COLORS } from '../colors';
 import axios from 'axios';
@@ -38,6 +38,17 @@ const UploadScreen = ({ navigation }) => {
    */
   const handleArCore = () => {
     NativeModules.ARCore.startARCore();
+  };
+
+  const handleARCoreInformation = () => {
+    NativeModules.ARCore.getFromARCore((error, count) => {
+      try {
+        setId(count);
+      } catch (err) {
+        console.error(err);
+        console.error(error);
+      }
+    });
   };
 
   const uploadToIpfs = () => {
@@ -102,9 +113,11 @@ const UploadScreen = ({ navigation }) => {
         </View>
         {/* ARCore */}
         <View>
-          <Text testID="id" style={styles.label}>
-            ID: {id || '...'}
-          </Text>
+          <Pressable onPress={handleARCoreInformation}>
+            <Text testID="id" style={styles.label}>
+              ID: {id || '...'}
+            </Text>
+          </Pressable>
           <Text testID="location" style={styles.label}>
             Location: {location || '...'}
           </Text>
