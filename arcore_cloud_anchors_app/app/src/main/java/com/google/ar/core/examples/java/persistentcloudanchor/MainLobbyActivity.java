@@ -16,8 +16,11 @@
 
 package com.google.ar.core.examples.java.persistentcloudanchor;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.ar.core.examples.java.common.helpers.DisplayRotationHelper;
@@ -39,6 +42,13 @@ public class MainLobbyActivity extends AppCompatActivity {
   }
 
   @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    setResult(resultCode, data);
+    finish();
+  }
+
+  @Override
   protected void onResume() {
     super.onResume();
     displayRotationHelper.onResume();
@@ -52,7 +62,7 @@ public class MainLobbyActivity extends AppCompatActivity {
 
   private void onHostButtonPress() {
     Intent intent = CloudAnchorActivity.newHostingIntent(this);
-    startActivity(intent);
+    startActivityForResult(intent, 1);
   }
 
   /** Callback function invoked when the Resolve Button is pressed. */

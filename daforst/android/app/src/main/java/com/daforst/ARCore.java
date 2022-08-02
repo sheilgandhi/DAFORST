@@ -26,7 +26,7 @@ public class ARCore extends ReactContextBaseJavaModule {
         callIntent.setType("text/plain");
         try {
 //            Toast.makeText(getReactApplicationContext(), uri.toString(), Toast.LENGTH_LONG).show();
-            getCurrentActivity().startActivity(callIntent);
+            getCurrentActivity().startActivityForResult(callIntent, 1);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,14 +34,7 @@ public class ARCore extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void getFromARCore(Callback successCallback) {
-        String id = "";
-        Bundle extras = getCurrentActivity().getIntent().getExtras();
-        Log.d("Extra", extras.toString());
-        if (extras != null) {
-            id = extras.getString("id");
-            Log.d("id", id);
-        }
-        successCallback.invoke(null, id);
+        successCallback.invoke(null, MainActivity.ar_core_id);
     }
 
 

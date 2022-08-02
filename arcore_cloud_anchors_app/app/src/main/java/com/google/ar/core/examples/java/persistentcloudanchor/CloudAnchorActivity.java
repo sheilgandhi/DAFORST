@@ -16,6 +16,7 @@
 
 package com.google.ar.core.examples.java.persistentcloudanchor;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -733,14 +734,15 @@ public class CloudAnchorActivity extends AppCompatActivity implements GLSurfaceV
       userMessageText.setVisibility(View.GONE);
       debugText.setText(getString(R.string.debug_hosting_success, cloudAnchorId));
       Intent sendIntent = new Intent();
-      sendIntent.setAction(Intent.ACTION_SEND);
+      //sendIntent.setAction(Intent.ACTION_SEND);
       sendIntent.putExtra("id", cloudAnchorId);
-//      sendIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(buffer));
-      sendIntent.setType("text/plain");
-      Log.d("ID", cloudAnchorId);
+      setResult(Activity.RESULT_OK, sendIntent);
+      Log.e("CLOUDANCHORID", cloudAnchorId);//      sendIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(buffer));
+      finish();
+      //sendIntent.setType("text/plain");
       // change chooser to DAFORST app com.daforst
-      Intent shareIntent = Intent.createChooser(sendIntent, cloudAnchorId);
-      startActivity(shareIntent);
+      //Intent shareIntent = Intent.createChooser(sendIntent, cloudAnchorId);
+      //startActivity(shareIntent);
     }
 
     private void saveAnchorWithNickname() {

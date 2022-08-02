@@ -41,9 +41,9 @@ const UploadScreen = ({ navigation }) => {
   };
 
   const handleARCoreInformation = () => {
-    NativeModules.ARCore.getFromARCore((error, count) => {
+    NativeModules.ARCore.getFromARCore((error, arcore_id) => {
       try {
-        setId(count);
+        setId(arcore_id);
       } catch (err) {
         console.error(err);
         console.error(error);
