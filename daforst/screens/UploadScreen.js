@@ -7,11 +7,10 @@ import {
   ScrollView,
   useWindowDimensions,
   Pressable,
+  NativeModules,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import IPFS from 'ipfs-mini';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-
 import { COLORS } from '../colors';
 import axios from 'axios';
 
@@ -34,17 +33,22 @@ const UploadScreen = ({ navigation }) => {
     protocol: 'https',
   });
 
-  const handleImagePicker = async () => {
-    const result = await launchImageLibrary({
-      includeBase64: true,
-    });
-    setImage(result);
+  /**
+   * Uses React Native Bridge
+   */
+  const handleArCore = () => {
+    NativeModules.ARCore.startARCore();
   };
-  const handleCamera = async () => {
-    const result = await launchCamera({
-      includeBase64: true,
+
+  const handleARCoreInformation = () => {
+    NativeModules.ARCore.getFromARCore((error, arcore_id) => {
+      try {
+        setId(arcore_id);
+      } catch (err) {
+        console.error(err);
+        console.error(error);
+      }
     });
-    setImage(result);
   };
 
   const uploadToIpfs = () => {
@@ -103,18 +107,17 @@ const UploadScreen = ({ navigation }) => {
       <ScrollView>
         {/* Upload */}
         <View style={styles.uploadGroup}>
-          <Pressable onPress={handleImagePicker} style={styles.upload}>
-            <Text style={{ color: COLORS.black }}>🖼️ Photo Gallery</Text>
-          </Pressable>
-          <Pressable onPress={handleCamera} style={styles.upload}>
-            <Text style={{ color: COLORS.black }}>📷 Camera</Text>
+          <Pressable onPress={handleArCore} style={styles.upload}>
+            <Text style={{ color: COLORS.black }}>📷 Capture</Text>
           </Pressable>
         </View>
         {/* ARCore */}
         <View>
-          <Text testID="id" style={styles.label}>
-            ID: {id || '...'}
-          </Text>
+          <Pressable onPress={handleARCoreInformation}>
+            <Text testID="id" style={styles.label}>
+              ID: {id || '...'}
+            </Text>
+          </Pressable>
           <Text testID="location" style={styles.label}>
             Location: {location || '...'}
           </Text>
