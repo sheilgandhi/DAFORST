@@ -25,7 +25,6 @@ public class ARCore extends ReactContextBaseJavaModule {
         Intent callIntent = new Intent(Intent.ACTION_SEND, uri);
         callIntent.setType("text/plain");
         try {
-//            Toast.makeText(getReactApplicationContext(), uri.toString(), Toast.LENGTH_LONG).show();
             getCurrentActivity().startActivityForResult(callIntent, 1);
         } catch (Exception e) {
             e.printStackTrace();

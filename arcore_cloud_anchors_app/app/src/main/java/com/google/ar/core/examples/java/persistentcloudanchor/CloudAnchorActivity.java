@@ -93,9 +93,6 @@ public class CloudAnchorActivity extends AppCompatActivity implements GLSurfaceV
   protected static final double MIN_DISTANCE = 0.2f;
   protected static final double MAX_DISTANCE = 10.0f;
 
-  // DAFORST
-  public ByteBuffer buffer;
-
   static Intent newHostingIntent(Context packageContext) {
     Intent intent = new Intent(packageContext, CloudAnchorActivity.class);
     intent.putExtra(EXTRA_HOSTING_MODE, true);
@@ -602,8 +599,6 @@ public class CloudAnchorActivity extends AppCompatActivity implements GLSurfaceV
         runOnUiThread(
             () -> {
               userMessageText.setText(R.string.hosting_processing);
-              // Set image from backgroundRenderer
-              buffer = backgroundRenderer.image;
               debugText.setText(R.string.debug_hosting_processing);
             });
       }
@@ -734,15 +729,10 @@ public class CloudAnchorActivity extends AppCompatActivity implements GLSurfaceV
       userMessageText.setVisibility(View.GONE);
       debugText.setText(getString(R.string.debug_hosting_success, cloudAnchorId));
       Intent sendIntent = new Intent();
-      //sendIntent.setAction(Intent.ACTION_SEND);
       sendIntent.putExtra("id", cloudAnchorId);
       setResult(Activity.RESULT_OK, sendIntent);
-      Log.e("CLOUDANCHORID", cloudAnchorId);//      sendIntent.putExtra(Intent.EXTRA_TEXT, String.valueOf(buffer));
+      Log.e("CLOUDANCHORID", cloudAnchorId);
       finish();
-      //sendIntent.setType("text/plain");
-      // change chooser to DAFORST app com.daforst
-      //Intent shareIntent = Intent.createChooser(sendIntent, cloudAnchorId);
-      //startActivity(shareIntent);
     }
 
     private void saveAnchorWithNickname() {

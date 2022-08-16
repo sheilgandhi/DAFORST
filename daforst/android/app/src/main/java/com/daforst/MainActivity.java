@@ -46,7 +46,6 @@ public class MainActivity extends ReactActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
       mInitialProps = mActivity.getIntent().getExtras();
-      Log.e("Called?", "Are you being called?");
       if (mInitialProps != null) Log.e("MainActivityFilter", mInitialProps.getString("ID"));
       super.onCreate(savedInstanceState);
     }
@@ -61,10 +60,10 @@ public class MainActivity extends ReactActivity {
       if (requestCode == 1) {
         if (resultCode == Activity.RESULT_OK) {
           ar_core_id = data.getExtras().getString("id");
-          Log.e(TAG, ar_core_id);
-          Log.e(TAG, "All good g");
+          Log.d(TAG, ar_core_id);
+//          Log.e(TAG, "All good g");
         } else if (resultCode == Activity.RESULT_CANCELED) {
-          Log.e(TAG, "Bugger");
+//          Log.e(TAG, "Bugger");
         }
       }
     }

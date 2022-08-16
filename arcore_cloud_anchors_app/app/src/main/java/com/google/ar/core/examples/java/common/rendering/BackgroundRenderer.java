@@ -68,9 +68,6 @@ public class BackgroundRenderer {
   private int depthTextureUniform;
   private int depthTextureId = -1;
 
-  // DAFORST
-  public ByteBuffer image;
-
   public int getTextureId() {
     return cameraTextureId;
   }
@@ -193,16 +190,16 @@ public class BackgroundRenderer {
       return;
     }
 
-    try {
-      Image im = frame.acquireCameraImage();
-      ByteBuffer buf = im.getPlanes()[0].getBuffer();
-      image = buf;
-      Log.d(TAG, "Format = " + im.getFormat());
-      im.close();
-
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+//    try {
+//      Image im = frame.acquireCameraImage();
+//      ByteBuffer buf = im.getPlanes()[0].getBuffer();
+//      image = buf;
+//      Log.d(TAG, "Format = " + im.getFormat());
+//      im.close();
+//
+//    } catch (Exception e) {
+//      e.printStackTrace();
+//    }
 
     draw(debugShowDepthMap);
   }
