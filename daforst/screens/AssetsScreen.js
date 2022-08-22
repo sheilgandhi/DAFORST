@@ -6,6 +6,7 @@ import AssetPreview from '../components/AssetPreview';
 
 const AssetsScreen = ({ navigation }) => {
   const [assets, setAssets] = useState([]);
+  const ip = '192.168.68.52';
 
   useEffect(() => {
     // base64ToImage();
@@ -14,25 +15,10 @@ const AssetsScreen = ({ navigation }) => {
 
   const getAssets = async () => {
     try {
-      const response = await axios.get('http://10.0.2.2:3000/api/assets');
+      const response = await axios.get(`http://${ip}:3000/api/ipfs`);
       if (response) {
-        const array = response.data;
-        for (let i = 0; i < array.length; i++) {
-          array[i]['imgUrl'] = await base64ToImage(array[i].ipfs_cid);
-        }
-        setAssets(array);
+        setAssets(response.data);
       }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const base64ToImage = async ipfs_cid => {
-    try {
-      const response = await axios.get(
-        `https://ipfs.infura.io/ipfs/${ipfs_cid}`,
-      );
-      return response.data;
     } catch (error) {
       console.error(error);
     }
@@ -43,8 +29,13 @@ const AssetsScreen = ({ navigation }) => {
       {assets.length > 0 ? (
         <FlatList
           data={assets}
-          renderItem={({ item }) => (
-            <AssetPreview asset={item} navigation={navigation} key={item.key} />
+          renderItem={({ item, index }) => (
+            <AssetPreview
+              asset={item}
+              navigation={navigation}
+              key={item.key}
+              index={index}
+            />
           )}
         />
       ) : (
