@@ -2,53 +2,52 @@
 
 exports[`AssetPreview renders correctly 1`] = `
 <View
-  accessible={true}
-  collapsable={false}
-  focusable={true}
-  onBlur={[Function]}
-  onClick={[Function]}
-  onFocus={[Function]}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
   style={
     Object {
+      "backgroundColor": "#E6DAB6",
       "flexDirection": "row",
     }
   }
 >
-  <Image
-    source={
-      Object {
-        "uri": "data:image/png;base64,function () {
-        return fn.apply(this, arguments);
-      }",
-      }
-    }
-    style={
-      Object {
-        "height": 100,
-        "width": 100,
-      }
-    }
-  />
   <View
     style={
       Object {
         "color": "#000",
         "flex": 1,
         "justifyContent": "center",
-        "paddingLeft": 20,
+        "padding": 20,
       }
     }
   >
-    <Text>
+    <Text
+      style={
+        Object {
+          "color": "#000",
+        }
+      }
+    >
       <Text
         style={
           Object {
+            "color": "#000",
+            "fontWeight": "bold",
+          }
+        }
+      >
+        ARCore ID: 
+      </Text>
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#000",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#000",
             "fontWeight": "bold",
           }
         }
@@ -56,10 +55,17 @@ exports[`AssetPreview renders correctly 1`] = `
         Name: 
       </Text>
     </Text>
-    <Text>
+    <Text
+      style={
+        Object {
+          "color": "#000",
+        }
+      }
+    >
       <Text
         style={
           Object {
+            "color": "#000",
             "fontWeight": "bold",
           }
         }
@@ -67,10 +73,17 @@ exports[`AssetPreview renders correctly 1`] = `
         Owner: 
       </Text>
     </Text>
-    <Text>
+    <Text
+      style={
+        Object {
+          "color": "#000",
+        }
+      }
+    >
       <Text
         style={
           Object {
+            "color": "#000",
             "fontWeight": "bold",
           }
         }

@@ -42,6 +42,7 @@ exports[`UploadScreen renders correctly 1`] = `
               "padding": 10,
             }
           }
+          testID="capture"
         >
           <Text
             style={
@@ -50,7 +51,7 @@ exports[`UploadScreen renders correctly 1`] = `
               }
             }
           >
-            🖼️ Photo Gallery
+            📷 Capture
           </Text>
         </View>
         <View
@@ -76,6 +77,7 @@ exports[`UploadScreen renders correctly 1`] = `
               "padding": 10,
             }
           }
+          testID="refresh"
         >
           <Text
             style={
@@ -84,7 +86,7 @@ exports[`UploadScreen renders correctly 1`] = `
               }
             }
           >
-            📷 Camera
+            Refresh Metadata
           </Text>
         </View>
       </View>
@@ -101,20 +103,6 @@ exports[`UploadScreen renders correctly 1`] = `
           testID="id"
         >
           ID: 
-          ...
-        </Text>
-        <Text
-          style={
-            Object {
-              "color": "#55897B",
-              "fontSize": 16,
-              "fontWeight": "bold",
-              "paddingBottom": 10,
-            }
-          }
-          testID="location"
-        >
-          Location: 
           ...
         </Text>
       </View>
@@ -253,6 +241,7 @@ exports[`UploadScreen renders correctly 1`] = `
           Object {
             "alignItems": "center",
             "justifyContent": "space-evenly",
+            "marginTop": 80,
             "paddingBottom": 10,
           }
         }

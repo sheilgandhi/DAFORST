@@ -38,6 +38,11 @@
     ],
     "setupFiles": [
       "./mockFile.js"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "html"
     ]
   }
 }

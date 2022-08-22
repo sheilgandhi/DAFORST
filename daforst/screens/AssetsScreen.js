@@ -28,6 +28,7 @@ const AssetsScreen = ({ navigation }) => {
     <View>
       {assets.length > 0 ? (
         <FlatList
+          testID="list"
           data={assets}
           renderItem={({ item, index }) => (
             <AssetPreview

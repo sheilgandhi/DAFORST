@@ -51,7 +51,6 @@ const UploadScreen = ({ navigation }) => {
   };
 
   const postToDb = async () => {
-    console.log('first');
     await axios
       .post(`http://${ip}:3000/api/ipfs/`, {
         arcore_id: id,
@@ -81,10 +80,16 @@ const UploadScreen = ({ navigation }) => {
       <ScrollView>
         {/* Upload */}
         <View style={styles.uploadGroup}>
-          <Pressable onPress={handleArCore} style={styles.upload}>
+          <Pressable
+            testID="capture"
+            onPress={handleArCore}
+            style={styles.upload}>
             <Text style={{ color: COLORS.black }}>📷 Capture</Text>
           </Pressable>
-          <Pressable onPress={handleARCoreInformation} style={styles.upload}>
+          <Pressable
+            testID="refresh"
+            onPress={handleARCoreInformation}
+            style={styles.upload}>
             <Text style={{ color: COLORS.black }}>Refresh Metadata</Text>
           </Pressable>
         </View>

@@ -1,5 +1,5 @@
+import { cleanup, render, screen } from '@testing-library/react-native';
 import React from 'react';
-import renderer from 'react-test-renderer';
 import AssetsScreen from '../screens/AssetsScreen';
 
 const navigation = {
@@ -9,10 +9,17 @@ const navigation = {
 };
 
 describe('AssetsScreen', () => {
+  beforeEach(() => {
+    const useEffectMock = f => f();
+    jest.spyOn(React, 'useState').mockImplementation(useEffectMock);
+    render(<AssetsScreen navigation={navigation} />);
+  });
+
+  afterEach(() => {
+    cleanup();
+  });
+
   test('renders correctly', () => {
-    const tree = renderer
-      .create(<AssetsScreen navigation={navigation} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    expect(screen.toJSON()).toMatchSnapshot();
   });
 });
