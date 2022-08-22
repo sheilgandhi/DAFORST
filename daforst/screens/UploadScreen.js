@@ -15,10 +15,7 @@ import { COLORS } from '../colors';
 import axios from 'axios';
 
 const UploadScreen = ({ navigation }) => {
-  const [image, setImage] = useState(null);
-
   const [id, setId] = useState('');
-  const [location, setLocation] = useState('');
   const [ipfsCid, setIpfsCid] = useState('');
 
   const [name, setName] = useState('');
@@ -32,6 +29,8 @@ const UploadScreen = ({ navigation }) => {
     port: 5001,
     protocol: 'https',
   });
+
+  const ip = '192.168.68.52';
 
   /**
    * Uses React Native Bridge
@@ -51,51 +50,26 @@ const UploadScreen = ({ navigation }) => {
     });
   };
 
-  const uploadToIpfs = () => {
-    ipfs
-      .add(image.assets[0].base64)
-      .then(hash => {
-        console.log(hash);
-        setIpfsCid(hash);
-      })
-      .catch(console.log);
-  };
-
   const postToDb = async () => {
+    console.log('first');
     await axios
-      .post('http://10.0.2.2:3000/api/assets/', {
+      .post(`http://${ip}:3000/api/ipfs/`, {
         arcore_id: id,
-        arcore_location: location,
-        ipfs_cid: ipfsCid,
         name: name,
         owner: owner,
         description: desc,
       })
       .then(function (response) {
         console.log(response);
+        navigation.navigate('Assets');
       })
       .catch(function (error) {
         console.log(error);
       });
   };
 
-  const handleAddAsset = () => {
-    console.log(image.assets[0].base64);
-
-    // ARCore here
-
-    // IPFS
-    uploadToIpfs();
-    // Db Persistence
-    postToDb();
-    // navigate user to assets
-    navigation.navigate('Assets');
-  };
-
   const handleClear = () => {
-    setImage(null);
     setId('');
-    setLocation('');
     setIpfsCid('');
     setName('');
     setOwner('');
@@ -110,16 +84,14 @@ const UploadScreen = ({ navigation }) => {
           <Pressable onPress={handleArCore} style={styles.upload}>
             <Text style={{ color: COLORS.black }}>📷 Capture</Text>
           </Pressable>
+          <Pressable onPress={handleARCoreInformation} style={styles.upload}>
+            <Text style={{ color: COLORS.black }}>Refresh Metadata</Text>
+          </Pressable>
         </View>
         {/* ARCore */}
         <View>
-          <Pressable onPress={handleARCoreInformation}>
-            <Text testID="id" style={styles.label}>
-              ID: {id || '...'}
-            </Text>
-          </Pressable>
-          <Text testID="location" style={styles.label}>
-            Location: {location || '...'}
+          <Text testID="id" style={styles.label}>
+            ID: {id || '...'}
           </Text>
         </View>
         {/* Form Basic */}
@@ -171,7 +143,7 @@ const UploadScreen = ({ navigation }) => {
         <View style={styles.buttons}>
           <Pressable
             testID="uploadButton"
-            onPress={handleAddAsset}
+            onPress={postToDb}
             style={[
               styles.button,
               { backgroundColor: COLORS.green, width: width - 64 },
@@ -229,6 +201,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   buttons: {
+    marginTop: 80,
     justifyContent: 'space-evenly',
     alignItems: 'center',
     paddingBottom: 10,
