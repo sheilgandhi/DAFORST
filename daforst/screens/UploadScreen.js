@@ -30,7 +30,7 @@ const UploadScreen = ({ navigation }) => {
     protocol: 'https',
   });
 
-  const ip = '192.168.68.52';
+  const ip = '10.140.78.215'; // '192.168.68.52';
 
   /**
    * Uses React Native Bridge
